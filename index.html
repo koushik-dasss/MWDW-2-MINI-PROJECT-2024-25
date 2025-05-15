@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JobHub - Find Your Dream Job</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <!-- Header Section -->
+  <header class="header transparent">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="logo">JobHub</a>
+        
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="job-listings.html" class="nav-link">Jobs</a></li>
+          <li class="employer-only logged-in-only" style="display: none;"><a href="employer-dashboard.html" class="nav-link">Employer Dashboard</a></li>
+          <li class="jobseeker-only logged-in-only" style="display: none;"><a href="job-seeker-dashboard.html" class="nav-link">Job Seeker Dashboard</a></li>
+          <li class="employer-only logged-in-only" style="display: none;"><a href="post-job.html" class="nav-link">Post a Job</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="logged-out-only"><a href="login.html" class="btn btn-outline">Login</a></li>
+          <li class="logged-out-only"><a href="register.html" class="btn btn-primary">Register</a></li>
+          <li class="logged-in-only" style="display: none;">
+            <a href="#" class="nav-link"><i class="fas fa-user"></i> <span class="user-name">User</span></a>
+          </li>
+          <li class="logged-in-only" style="display: none;">
+            <a href="#" class="btn btn-outline logout-btn">Logout</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Find Your Dream Job Today</h1>
+        <p class="hero-subtitle">Browse thousands of job listings from top companies and find the perfect match for your skills and career goals.</p>
+        <a href="job-listings.html" class="btn btn-primary btn-lg hero-btn">Browse Jobs</a>
+      
+        <div class="search-container">
+          <form id="search-form" class="search-form">
+            <div class="form-group">
+              <input type="text" id="search-keyword" class="form-control" placeholder="Job title, keyword or company">
+            </div>
+            <div class="form-group">
+              <input type="text" id="search-location" class="form-control" placeholder="Location">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Jobs Section -->
+  <section class="py-xl">
+    <div class="container">
+      <h2 class="section-title">Featured Jobs</h2>
+      <p class="section-subtitle">Discover opportunities from leading companies across different industries</p>
+      
+      <div id="featured-jobs" class="job-cards">
+        <!-- Featured jobs will be loaded from JavaScript -->
+      </div>
+      
+      <div class="text-center mt-lg">
+        <a href="job-listings.html" class="btn btn-outline">View All Jobs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="py-xl" style="background-color: var(--neutral-100);">
+    <div class="container">
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-subtitle">Simple steps to start your job search or hiring process</p>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div style="font-size: 2rem; color: var(--primary-600); margin-bottom: var(--space-sm);">
+            <i class="fas fa-user-plus"></i>
+          </div>
+          <h3>Create an Account</h3>
+          <p>Sign up as a job seeker or employer to access all features</p>
+        </div>
+        
+        <div class="stat-card">
+          <div style="font-size: 2rem; color: var(--primary-600); margin-bottom: var(--space-sm);">
+            <i class="fas fa-file-alt"></i>
+          </div>
+          <h3>Complete Your Profile</h3>
+          <p>Add your information and upload your resume to stand out</p>
+        </div>
+        
+        <div class="stat-card">
+          <div style="font-size: 2rem; color: var(--primary-600); margin-bottom: var(--space-sm);">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3>Browse Jobs</h3>
+          <p>Search and filter jobs based on your preferences</p>
+        </div>
+        
+        <div class="stat-card">
+          <div style="font-size: 2rem; color: var(--primary-600); margin-bottom: var(--space-sm);">
+            <i class="fas fa-paper-plane"></i>
+          </div>
+          <h3>Apply with One Click</h3>
+          <p>Quickly apply to jobs with your saved profile and resume</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="py-xl">
+    <div class="container">
+      <h2 class="section-title">Popular Categories</h2>
+      <p class="section-subtitle">Explore jobs by industry categories</p>
+      
+      <div class="stats-grid">
+        <a href="job-listings.html?category=IT%20%26%20Software" class="stat-card">
+          <div style="font-size: 2rem; color: var(--primary-600); margin-bottom: var(--space-sm);">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <h3>IT & Software</h3>
+          <p>Software development, networking, security</p>
+        </a>
+        
+        <a href="job-listings.html?category=Marketing" class="stat-card">
+          <div style="font-size: 2rem; color: var(--accent-500); margin-bottom: var(--space-sm);">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+          <h3>Marketing</h3>
+          <p>Digital marketing, SEO, social media</p>
+        </a>
+        
+        <a href="job-listings.html?category=Design" class="stat-card">
+          <div style="font-size: 2rem; color: var(--secondary-500); margin-bottom: var(--space-sm);">
+            <i class="fas fa-palette"></i>
+          </div>
+          <h3>Design</h3>
+          <p>UX/UI design, graphic design, illustration</p>
+        </a>
+        
+        <a href="job-listings.html?category=Finance" class="stat-card">
+          <div style="font-size: 2rem; color: var(--success-500); margin-bottom: var(--space-sm);">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Finance</h3>
+          <p>Accounting, banking, investment</p>
+        </a>
+        
+        <a href="job-listings.html?category=Customer%20Service" class="stat-card">
+          <div style="font-size: 2rem; color: var(--warning-500); margin-bottom: var(--space-sm);">
+            <i class="fas fa-headset"></i>
+          </div>
+          <h3>Customer Service</h3>
+          <p>Support, call center, customer success</p>
+        </a>
+        
+        <a href="job-listings.html?category=Data%20Science" class="stat-card">
+          <div style="font-size: 2rem; color: var(--error-500); margin-bottom: var(--space-sm);">
+            <i class="fas fa-database"></i>
+          </div>
+          <h3>Data Science</h3>
+          <p>Data analysis, machine learning, BI</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="py-xl" style="background-color: var(--primary-600); color: white;">
+    <div class="container">
+      <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <h2 style="color: white; margin-bottom: var(--space-md);">Ready to Take the Next Step in Your Career?</h2>
+        <p style="margin-bottom: var(--space-lg); color: var(--primary-100);">Join thousands of job seekers and employers who have found success with JobHub.</p>
+        <div style="display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap;">
+          <a href="register.html" class="btn btn-lg" style="background-color: white; color: var(--primary-600);">Create an Account</a>
+          <a href="job-listings.html" class="btn btn-lg" style="background-color: var(--primary-700); color: white; border: 1px solid white;">Browse Jobs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">JobHub</div>
+          <p class="footer-description">Find your dream job or the perfect candidate with JobHub. We connect talented professionals with leading companies.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        
+        <div>
+          <h4>For Job Seekers</h4>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="job-listings.html">Browse Jobs</a></li>
+            <li class="footer-link"><a href="job-seeker-dashboard.html">Job Seeker Dashboard</a></li>
+            <li class="footer-link"><a href="#">Career Resources</a></li>
+            <li class="footer-link"><a href="#">Resume Tips</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4>For Employers</h4>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="post-job.html">Post a Job</a></li>
+            <li class="footer-link"><a href="employer-dashboard.html">Employer Dashboard</a></li>
+            <li class="footer-link"><a href="#">Recruitment Solutions</a></li>
+            <li class="footer-link"><a href="#">Pricing Plans</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="#">About Us</a></li>
+            <li class="footer-link"><a href="contact.html">Contact Us</a></li>
+            <li class="footer-link"><a href="#">Privacy Policy</a></li>
+            <li class="footer-link"><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="copyright">&copy; 2025 JobHub. All rights reserved.</div>
+        <div class="footer-bottom-links">
+          <a href="#" class="footer-bottom-link">Privacy Policy</a>
+          <a href="#" class="footer-bottom-link">Terms of Service</a>
+          <a href="#" class="footer-bottom-link">Cookies Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+  <script src="assets/js/script.js"></script>
+  
+  <script>
+    // Get featured jobs from localStorage
+    $(document).ready(function() {
+      const jobs = JSON.parse(localStorage.getItem('jobs') || '[]');
+      const featuredJobs = jobs.slice(0, 6); // Get first 6 jobs
+      
+      let html = '';
+      
+      if (featuredJobs.length === 0) {
+        html = '<div class="text-center py-md"><p>No jobs available at the moment.</p></div>';
+      } else {
+        featuredJobs.forEach(job => {
+          const datePosted = new Date(job.datePosted);
+          const today = new Date();
+          const diffTime = Math.abs(today - datePosted);
+          const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+          let daysAgo = diffDays === 1 ? '1 day ago' : `${diffDays} days ago`;
+          
+          let jobTypeClass = '';
+          if (job.type === 'Full-time') jobTypeClass = 'job-tag-fulltime';
+          else if (job.type === 'Part-time') jobTypeClass = 'job-tag-parttime';
+          else if (job.type === 'Remote') jobTypeClass = 'job-tag-remote';
+          
+          html += `
+            <div class="job-card">
+              <div class="job-card-header">
+                <div class="company-logo">${job.companyLogo}</div>
+                <div>
+                  <div class="company-name">${job.company}</div>
+                  <div class="job-meta">
+                    <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> ${job.location}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="job-card-content">
+                <h3 class="job-title">${job.title}</h3>
+                <div class="job-tags">
+                  <span class="job-tag ${jobTypeClass}">${job.type}</span>
+                  <span class="job-tag job-tag-fulltime">${job.category}</span>
+                </div>
+                <p>${job.description.substring(0, 100)}...</p>
+              </div>
+              <div class="job-card-footer">
+                <span class="job-date"><i class="far fa-clock"></i> ${daysAgo}</span>
+                <a href="job-details.html?id=${job.id}" class="btn btn-outline">View Details</a>
+              </div>
+            </div>
+          `;
+        });
+      }
+      
+      $('#featured-jobs').html(html);
+    });
+  </script>
+</body>
+</html>

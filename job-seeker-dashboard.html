@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Seeker Dashboard - JobHub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="logo">JobHub</a>
+        
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="job-listings.html" class="nav-link">Jobs</a></li>
+          <li class="employer-only logged-in-only" style="display: none;"><a href="employer-dashboard.html" class="nav-link">Employer Dashboard</a></li>
+          <li class="jobseeker-only logged-in-only" style="display: none;"><a href="job-seeker-dashboard.html" class="nav-link active">Job Seeker Dashboard</a></li>
+          <li class="employer-only logged-in-only" style="display: none;"><a href="post-job.html" class="nav-link">Post a Job</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="logged-out-only"><a href="login.html" class="btn btn-outline">Login</a></li>
+          <li class="logged-out-only"><a href="register.html" class="btn btn-primary">Register</a></li>
+          <li class="logged-in-only" style="display: none;">
+            <a href="#" class="nav-link"><i class="fas fa-user"></i> <span class="user-name">User</span></a>
+          </li>
+          <li class="logged-in-only" style="display: none;">
+            <a href="#" class="btn btn-outline logout-btn">Logout</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="job-seeker-dashboard-page">
+    <div class="dashboard">
+      <div class="dashboard-sidebar">
+        <ul class="dashboard-nav">
+          <li><a href="#" class="dashboard-nav-link active" data-tab="overview"><i class="fas fa-tachometer-alt"></i> Overview</a></li>
+          <li><a href="#" class="dashboard-nav-link" data-tab="applications"><i class="fas fa-file-alt"></i> Applications</a></li>
+          <li><a href="#" class="dashboard-nav-link" data-tab="saved-jobs"><i class="fas fa-bookmark"></i> Saved Jobs</a></li>
+          <li><a href="#" class="dashboard-nav-link" data-tab="profile"><i class="fas fa-user"></i> My Profile</a></li>
+          <li><a href="#" class="dashboard-nav-link" data-tab="resume"><i class="fas fa-file"></i> Resume</a></li>
+          <li><a href="job-listings.html" class="dashboard-nav-link"><i class="fas fa-search"></i> Find Jobs</a></li>
+          <li><a href="#" class="dashboard-nav-link logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+      </div>
+      
+      <div class="dashboard-content">
+        <!-- Overview Tab -->
+        <div class="dashboard-tab active" id="overview-tab">
+          <div class="dashboard-header">
+            <h2>Dashboard Overview</h2>
+          </div>
+          
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-number" id="total-applications">0</div>
+              <div class="stat-label">Applications</div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-number" id="saved-jobs-count">0</div>
+              <div class="stat-label">Saved Jobs</div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-number">0</div>
+              <div class="stat-label">Interviews</div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-number">Free</div>
+              <div class="stat-label">Current Plan</div>
+            </div>
+          </div>
+          
+          <div class="mb-lg">
+            <h3>Recent Applications</h3>
+            <div class="table-responsive">
+              <table class="table" id="recent-applied-jobs-table">
+                <thead>
+                  <tr>
+                    <th>Job Title</th>
+                    <th>Company</th>
+                    <th>Date Applied</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Will be populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <div>
+            <h3>Recommended Jobs</h3>
+            <div id="recommended-jobs" class="job-cards">
+              <!-- Will be populated dynamically -->
+            </div>
+          </div>
+        </div>
+        
+        <!-- Applications Tab -->
+        <div class="dashboard-tab" id="applications-tab">
+          <div class="dashboard-header">
+            <h2>My Applications</h2>
+          </div>
+          
+          <div class="table-responsive">
+            <table class="table" id="applied-jobs-table">
+              <thead>
+                <tr>
+                  <th>Job Title</th>
+                  <th>Company</th>
+                  <th>Date Applied</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Will be populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <!-- Saved Jobs Tab -->
+        <div class="dashboard-tab" id="saved-jobs-tab">
+          <div class="dashboard-header">
+            <h2>Saved Jobs</h2>
+          </div>
+          
+          <div class="table-responsive">
+            <table class="table" id="saved-jobs-table">
+              <thead>
+                <tr>
+                  <th>Job Title</th>
+                  <th>Company</th>
+                  <th>Location</th>
+                  <th>Posted Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Will be populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <!-- Profile Tab -->
+        <div class="dashboard-tab" id="profile-tab">
+          <div class="dashboard-header">
+            <h2>My Profile</h2>
+          </div>
+          
+          <div class="profile-header">
+            <div class="profile-avatar" id="profile-avatar">T</div>
+            <div class="profile-info">
+              <h3 id="profile-name">Thomas Anderson</h3>
+              <p id="profile-title">Software Developer</p>
+              <p id="profile-location"><i class="fas fa-map-marker-alt"></i> New York, NY</p>
+            </div>
+          </div>
+          
+          <form id="profile-form">
+            <div class="form-group">
+              <label for="profile-full-name" class="form-label">Full Name</label>
+              <input type="text" id="profile-full-name" class="form-control" placeholder="Enter your full name">
+            </div>
+            
+            <div class="form-group">
+              <label for="profile-email" class="form-label">Email</label>
+              <input type="email" id="profile-email" class="form-control" placeholder="Enter your email" readonly>
+            </div>
+            
+            <div class="form-group">
+              <label for="profile-phone" class="form-label">Phone</label>
+              <input type="tel" id="profile-phone" class="form-control" placeholder="Enter your phone number">
+            </div>
+            
+            <div class="form-group">
+              <label for="profile-location-input" class="form-label">Location</label>
+              <input type="text" id="profile-location-input" class="form-control" placeholder="City, State, Country">
+            </div>
+            
+            <div class="form-group">
+              <label for="profile-title-input" class="form-label">Professional Title</label>
+              <input type="text" id="profile-title-input" class="form-control" placeholder="e.g., Software Developer, Marketing Manager">
+            </div>
+            
+            <div class="form-group">
+              <label for="profile-bio" class="form-label">About Me</label>
+              <textarea id="profile-bio" class="form-control" rows="5" placeholder="Write a short bio highlighting your skills and experience"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="profile-skills" class="form-label">Skills</label>
+              <textarea id="profile-skills" class="form-control" rows="3" placeholder="Enter your skills separated by commas"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+          </form>
+        </div>
+        
+        <!-- Resume Tab -->
+        <div class="dashboard-tab" id="resume-tab">
+          <div class="dashboard-header">
+            <h2>Resume</h2>
+          </div>
+          
+          <div class="mb-lg">
+            <h3>Resume File</h3>
+            <div class="upload-area">
+              <i class="fas fa-file-upload"></i>
+              <p>Click to upload your resume or drag and drop</p>
+              <p style="font-size: 0.875rem; color: var(--neutral-500);">Supported formats: PDF, DOCX, DOC (Max size: 5MB)</p>
+              <input type="file" id="resume-file" style="opacity: 0; position: absolute; width: 100%; height: 100%; top: 0; left: 0; cursor: pointer;">
+            </div>
+            <div id="resume-file-preview" class="resume-preview" style="display: none; margin-top: var(--space-sm);">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span id="resume-file-name">filename.pdf</span>
+                <button type="button" id="remove-resume-file" class="btn btn-outline" style="padding: 4px 8px;"><i class="fas fa-times"></i></button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mb-lg">
+            <h3>Cover Letter Template</h3>
+            <div class="form-group">
+              <textarea id="cover-letter-template" class="form-control" rows="8" placeholder="Write a template cover letter that you can customize for each application"></textarea>
+            </div>
+            <button type="button" id="save-cover-letter" class="btn btn-primary">Save Cover Letter Template</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">JobHub</div>
+          <p class="footer-description">Find your dream job or the perfect candidate with JobHub. We connect talented professionals with leading companies.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        
+        <div>
+          <h4>For Job Seekers</h4>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="job-listings.html">Browse Jobs</a></li>
+            <li class="footer-link"><a href="job-seeker-dashboard.html">Job Seeker Dashboard</a></li>
+            <li class="footer-link"><a href="#">Career Resources</a></li>
+            <li class="footer-link"><a href="#">Resume Tips</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4>For Employers</h4>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="post-job.html">Post a Job</a></li>
+            <li class="footer-link"><a href="employer-dashboard.html">Employer Dashboard</a></li>
+            <li class="footer-link"><a href="#">Recruitment Solutions</a></li>
+            <li class="footer-link"><a href="#">Pricing Plans</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="#">About Us</a></li>
+            <li class="footer-link"><a href="contact.html">Contact Us</a></li>
+            <li class="footer-link"><a href="#">Privacy Policy</a></li>
+            <li class="footer-link"><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="copyright">&copy; 2025 JobHub. All rights reserved.</div>
+        <div class="footer-bottom-links">
+          <a href="#" class="footer-bottom-link">Privacy Policy</a>
+          <a href="#" class="footer-bottom-link">Terms of Service</a>
+          <a href="#" class="footer-bottom-link">Cookies Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+  <script src="assets/js/script.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      // Dashboard tabs
+      $('.dashboard-nav-link').on('click', function(e) {
+        if (!$(this).hasClass('logout-btn')) {
+          e.preventDefault();
+          
+          const tab = $(this).data('tab');
+          
+          $('.dashboard-nav-link').removeClass('active');
+          $(this).addClass('active');
+          
+          $('.dashboard-tab').removeClass('active');
+          $(`#${tab}-tab`).addClass('active');
+        }
+      });
+      
+      // Handle resume file upload
+      $('#resume-file').on('change', function() {
+        const file = this.files[0];
+        if (file) {
+          $('#resume-file-name').text(file.name);
+          $('#resume-file-preview').show();
+        }
+      });
+      
+      // Handle remove resume file
+      $('#remove-resume-file').on('click', function() {
+        $('#resume-file').val('');
+        $('#resume-file-preview').hide();
+      });
+      
+      // Handle save cover letter template
+      $('#save-cover-letter').on('click', function() {
+        const coverLetterTemplate = $('#cover-letter-template').val();
+        if (coverLetterTemplate) {
+          // In a real app, this would be saved to the user's profile
+          showAlert('Cover letter template saved successfully!', 'success');
+        } else {
+          showAlert('Please enter a cover letter template!', 'error');
+        }
+      });
+      
+      // Load profile data
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      if (currentUser) {
+        $('#profile-name').text(currentUser.name);
+        $('#profile-avatar').text(currentUser.name.substring(0, 1).toUpperCase());
+        $('#profile-full-name').val(currentUser.name);
+        $('#profile-email').val(currentUser.email);
+        
+        // In a real app, these would be loaded from the user's profile
+        $('#profile-title').text('Job Seeker');
+        $('#profile-title-input').val('Job Seeker');
+        $('#profile-location').html('<i class="fas fa-map-marker-alt"></i> Not specified');
+        $('#profile-location-input').val('');
+      }
+      
+      // Handle profile form submission
+      $('#profile-form').on('submit', function(e) {
+        e.preventDefault();
+        
+        // In a real app, this would update the user's profile
+        showAlert('Profile updated successfully!', 'success');
+        
+        // Update display values
+        $('#profile-name').text($('#profile-full-name').val());
+        $('#profile-title').text($('#profile-title-input').val());
+        $('#profile-location').html(`<i class="fas fa-map-marker-alt"></i> ${$('#profile-location-input').val() || 'Not specified'}`);
+      });
+      
+      // Load recommended jobs
+      function loadRecommendedJobs() {
+        const jobs = JSON.parse(localStorage.getItem('jobs') || '[]');
+        const recommendedJobs = jobs.slice(0, 3); // Get first 3 jobs as recommendations
+        
+        let html = '';
+        
+        if (recommendedJobs.length === 0) {
+          html = '<div class="text-center py-md"><p>No recommended jobs available.</p></div>';
+        } else {
+          recommendedJobs.forEach(job => {
+            let jobTypeClass = '';
+            if (job.type === 'Full-time') jobTypeClass = 'job-tag-fulltime';
+            else if (job.type === 'Part-time') jobTypeClass = 'job-tag-parttime';
+            else if (job.type === 'Remote') jobTypeClass = 'job-tag-remote';
+            
+            html += `
+              <div class="job-card">
+                <div class="job-card-header">
+                  <div class="company-logo">${job.companyLogo}</div>
+                  <div>
+                    <div class="company-name">${job.company}</div>
+                    <div class="job-meta">
+                      <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> ${job.location}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="job-card-content">
+                  <h3 class="job-title">${job.title}</h3>
+                  <div class="job-tags">
+                    <span class="job-tag ${jobTypeClass}">${job.type}</span>
+                    <span class="job-tag job-tag-fulltime">${job.category}</span>
+                  </div>
+                </div>
+                <div class="job-card-footer">
+                  <a href="job-details.html?id=${job.id}" class="btn btn-outline">View Details</a>
+                </div>
+              </div>
+            `;
+          });
+        }
+        
+        $('#recommended-jobs').html(html);
+      }
+      
+      loadRecommendedJobs();
+    });
+  </script>
+</body>
+</html>

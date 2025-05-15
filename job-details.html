@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Details - JobHub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="logo">JobHub</a>
+        
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="job-listings.html" class="nav-link active">Jobs</a></li>
+          <li class="employer-only logged-in-only" style="display: none;"><a href="employer-dashboard.html" class="nav-link">Employer Dashboard</a></li>
+          <li class="jobseeker-only logged-in-only" style="display: none;"><a href="job-seeker-dashboard.html" class="nav-link">Job Seeker Dashboard</a></li>
+          <li class="employer-only logged-in-only" style="display: none;"><a href="post-job.html" class="nav-link">Post a Job</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="logged-out-only"><a href="login.html" class="btn btn-outline">Login</a></li>
+          <li class="logged-out-only"><a href="register.html" class="btn btn-primary">Register</a></li>
+          <li class="logged-in-only" style="display: none;">
+            <a href="#" class="nav-link"><i class="fas fa-user"></i> <span class="user-name">User</span></a>
+          </li>
+          <li class="logged-in-only" style="display: none;">
+            <a href="#" class="btn btn-outline logout-btn">Logout</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main style="padding-top: 100px; padding-bottom: var(--space-2xl);">
+    <div class="container">
+      <div class="mb-md">
+        <a href="job-listings.html" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Back to Jobs</a>
+      </div>
+      
+      <div class="job-details">
+        <div class="job-header">
+          <div class="job-company-logo" id="company-logo-text">C</div>
+          <div class="job-header-content">
+            <h1 id="job-title">Senior Frontend Developer</h1>
+            <div class="job-meta" style="margin-bottom: var(--space-xs);">
+              <span class="job-meta-item"><i class="fas fa-building"></i> <span id="job-company">TechCorp</span></span>
+              <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> <span id="job-location">New York, NY</span></span>
+              <span class="job-meta-item"><i class="fas fa-briefcase"></i> <span id="job-type">Full-time</span></span>
+              <span class="job-meta-item"><i class="fas fa-tags"></i> <span id="job-category">IT & Software</span></span>
+            </div>
+            <div class="job-meta">
+              <span class="job-meta-item"><i class="fas fa-money-bill-wave"></i> <span id="job-salary">$90,000 - $120,000</span></span>
+              <span class="job-meta-item"><i class="fas fa-calendar-alt"></i> Posted on <span id="job-date">May 10, 2023</span></span>
+            </div>
+            <div class="job-actions">
+              <a href="#" id="apply-btn" class="btn btn-primary">Apply Now</a>
+              <button id="save-job-btn" class="btn btn-outline save-job-btn" data-id=""><i class="far fa-bookmark"></i> Save Job</button>
+              <button class="btn btn-outline"><i class="fas fa-share-alt"></i> Share</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="job-description">
+          <h3>Job Description</h3>
+          <p id="job-description-text">We are looking for an experienced Frontend Developer to join our team. The ideal candidate will have strong skills in JavaScript, React, and modern CSS.</p>
+          
+          <h3>Responsibilities</h3>
+          <div id="job-responsibilities">
+            <ul>
+              <li>Develop and maintain responsive web applications</li>
+              <li>Work with product managers and designers to implement new features</li>
+              <li>Write clean, maintainable, and efficient code</li>
+              <li>Optimize applications for maximum speed and scalability</li>
+              <li>Collaborate with backend developers to integrate frontend with APIs</li>
+            </ul>
+          </div>
+          
+          <h3>Requirements</h3>
+          <div id="job-requirements">
+            <ul>
+              <li>5+ years of experience in frontend development</li>
+              <li>Proficiency in JavaScript, HTML, CSS, and React</li>
+              <li>Experience with responsive design and mobile-first approaches</li>
+              <li>Understanding of UI/UX design principles</li>
+              <li>Knowledge of modern frontend build tools and workflows</li>
+            </ul>
+          </div>
+          
+          <div class="company-info">
+            <h3>About the Company</h3>
+            <p>TechCorp is a leading technology company specialized in developing innovative software solutions for businesses of all sizes. With a team of talented professionals, we strive to create high-quality products that make a difference.</p>
+            
+            <div style="margin-top: var(--space-md);">
+              <a href="#" class="btn btn-outline"><i class="fas fa-globe"></i> Visit Website</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Similar Jobs Section -->
+      <section class="similar-jobs">
+        <h2 class="section-title">Similar Jobs</h2>
+        <div id="similar-jobs-container" class="job-cards">
+          <!-- Similar jobs will be loaded dynamically via JavaScript -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">JobHub</div>
+          <p class="footer-description">Find your dream job or the perfect candidate with JobHub. We connect talented professionals with leading companies.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        
+        <div>
+          <h4>For Job Seekers</h4>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="job-listings.html">Browse Jobs</a></li>
+            <li class="footer-link"><a href="job-seeker-dashboard.html">Job Seeker Dashboard</a></li>
+            <li class="footer-link"><a href="#">Career Resources</a></li>
+            <li class="footer-link"><a href="#">Resume Tips</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4>For Employers</h4>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="post-job.html">Post a Job</a></li>
+            <li class="footer-link"><a href="employer-dashboard.html">Employer Dashboard</a></li>
+            <li class="footer-link"><a href="#">Recruitment Solutions</a></li>
+            <li class="footer-link"><a href="#">Pricing Plans</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="#">About Us</a></li>
+            <li class="footer-link"><a href="contact.html">Contact Us</a></li>
+            <li class="footer-link"><a href="#">Privacy Policy</a></li>
+            <li class="footer-link"><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="copyright">&copy; 2025 JobHub. All rights reserved.</div>
+        <div class="footer-bottom-links">
+          <a href="#" class="footer-bottom-link">Privacy Policy</a>
+          <a href="#" class="footer-bottom-link">Terms of Service</a>
+          <a href="#" class="footer-bottom-link">Cookies Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+  <script src="assets/js/script.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      // Check if user has saved this job
+      const jobId = new URLSearchParams(window.location.search).get('id');
+      $('#save-job-btn').data('id', jobId);
+      
+      // Update save button text if job is already saved
+      const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+      if (currentUser && currentUser.role === 'jobseeker' && currentUser.savedJobs && currentUser.savedJobs.includes(jobId)) {
+        $('#save-job-btn').html('<i class="fas fa-bookmark"></i> Saved');
+      }
+    });
+  </script>
+</body>
+</html>

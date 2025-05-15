@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employer Dashboard - JobHub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="logo">JobHub</a>
+        
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="job-listings.html" class="nav-link">Jobs</a></li>
+          <li class="employer-only logged-in-only" style="display: none;"><a href="employer-dashboard.html" class="nav-link active">Employer Dashboard</a></li>
+          <li class="jobseeker-only logged-in-only" style="display: none;"><a href="job-seeker-dashboard.html" class="nav-link">Job Seeker Dashboard</a></li>
+          <li class="employer-only logged-in-only" style="display: none;"><a href="post-job.html" class="nav-link">Post a Job</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="logged-out-only"><a href="login.html" class="btn btn-outline">Login</a></li>
+          <li class="logged-out-only"><a href="register.html" class="btn btn-primary">Register</a></li>
+          <li class="logged-in-only" style="display: none;">
+            <a href="#" class="nav-link"><i class="fas fa-user"></i> <span class="user-name">User</span></a>
+          </li>
+          <li class="logged-in-only" style="display: none;">
+            <a href="#" class="btn btn-outline logout-btn">Logout</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="employer-dashboard-page">
+    <div class="dashboard">
+      <div class="dashboard-sidebar">
+        <ul class="dashboard-nav">
+          <li><a href="#" class="dashboard-nav-link active" data-tab="overview"><i class="fas fa-tachometer-alt"></i> Overview</a></li>
+          <li><a href="#" class="dashboard-nav-link" data-tab="jobs"><i class="fas fa-briefcase"></i> Posted Jobs</a></li>
+          <li><a href="#" class="dashboard-nav-link" data-tab="applications"><i class="fas fa-file-alt"></i> Applications</a></li>
+          <li><a href="#" class="dashboard-nav-link" data-tab="profile"><i class="fas fa-user"></i> Company Profile</a></li>
+          <li><a href="post-job.html" class="dashboard-nav-link"><i class="fas fa-plus-circle"></i> Post a New Job</a></li>
+          <li><a href="#" class="dashboard-nav-link logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+      </div>
+      
+      <div class="dashboard-content">
+        <!-- Overview Tab -->
+        <div class="dashboard-tab active" id="overview-tab">
+          <div class="dashboard-header">
+            <h2>Dashboard Overview</h2>
+          </div>
+          
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-number" id="total-jobs">0</div>
+              <div class="stat-label">Jobs Posted</div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-number" id="total-applications">0</div>
+              <div class="stat-label">Applications Received</div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-number">30</div>
+              <div class="stat-label">Days Remaining</div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-number">Standard</div>
+              <div class="stat-label">Current Plan</div>
+            </div>
+          </div>
+          
+          <div class="mb-lg">
+            <h3>Recent Applications</h3>
+            <div class="table-responsive">
+              <table class="table" id="recent-applications-table">
+                <thead>
+                  <tr>
+                    <th>Applicant</th>
+                    <th>Job Position</th>
+                    <th>Date Applied</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Will be populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          <div>
+            <h3>Quick Actions</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); margin-top: var(--space-md);">
+              <a href="post-job.html" class="btn btn-primary btn-block">Post a New Job</a>
+              <a href="#" class="btn btn-outline btn-block">View All Applications</a>
+              <a href="#" class="btn btn-outline btn-block">Edit Company Profile</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Posted Jobs Tab -->
+        <div class="dashboard-tab" id="jobs-tab">
+          <div class="dashboard-header">
+            <h2>Posted Jobs</h2>
+            <a href="post-job.html" class="btn btn-primary">Post a New Job</a>
+          </div>
+          
+          <div class="table-responsive">
+            <table class="table" id="posted-jobs-table">
+              <thead>
+                <tr>
+                  <th>Job Title</th>
+                  <th>Posted Date</th>
+                  <th>Applications</th>
+                  <th>Location</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Will be populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <!-- Applications Tab -->
+        <div class="dashboard-tab" id="applications-tab">
+          <div class="dashboard-header">
+            <h2>Job Applications</h2>
+          </div>
+          
+          <div class="mb-md">
+            <div class="form-group">
+              <label for="filter-job" class="form-label">Filter by Job</label>
+              <select id="filter-job" class="form-control form-select">
+                <option value="all">All Jobs</option>
+                <!-- Will be populated dynamically -->
+              </select>
+            </div>
+          </div>
+          
+          <div class="table-responsive">
+            <table class="table" id="applications-table">
+              <thead>
+                <tr>
+                  <th>Applicant</th>
+                  <th>Job Position</th>
+                  <th>Date Applied</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Will be populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <!-- Company Profile Tab -->
+        <div class="dashboard-tab" id="profile-tab">
+          <div class="dashboard-header">
+            <h2>Company Profile</h2>
+          </div>
+          
+          <form id="company-profile-form">
+            <div class="form-group">
+              <label for="company-name" class="form-label">Company Name</label>
+              <input type="text" id="company-name" class="form-control" placeholder="Enter company name">
+            </div>
+            
+            <div class="form-group">
+              <label for="company-website" class="form-label">Website</label>
+              <input type="url" id="company-website" class="form-control" placeholder="https://example.com">
+            </div>
+            
+            <div class="form-group">
+              <label for="company-industry" class="form-label">Industry</label>
+              <select id="company-industry" class="form-control form-select">
+                <option value="">Select Industry</option>
+                <option value="Technology">Technology</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Finance">Finance</option>
+                <option value="Education">Education</option>
+                <option value="Retail">Retail</option>
+                <option value="Manufacturing">Manufacturing</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="company-size" class="form-label">Company Size</label>
+              <select id="company-size" class="form-control form-select">
+                <option value="">Select Company Size</option>
+                <option value="1-10">1-10 employees</option>
+                <option value="11-50">11-50 employees</option>
+                <option value="51-200">51-200 employees</option>
+                <option value="201-500">201-500 employees</option>
+                <option value="501-1000">501-1000 employees</option>
+                <option value="1000+">1000+ employees</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="company-location" class="form-label">Location</label>
+              <input type="text" id="company-location" class="form-control" placeholder="City, State, Country">
+            </div>
+            
+            <div class="form-group">
+              <label for="company-description" class="form-label">About the Company</label>
+              <textarea id="company-description" class="form-control" rows="5" placeholder="Describe your company, culture, and mission"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="company-logo" class="form-label">Company Logo</label>
+              <div class="upload-area">
+                <i class="fas fa-upload"></i>
+                <p>Click to upload your company logo or drag and drop</p>
+                <p style="font-size: 0.875rem; color: var(--neutral-500);">Supported formats: JPG, PNG, SVG (Max size: 2MB)</p>
+                <input type="file" id="company-logo" style="opacity: 0; position: absolute; width: 100%; height: 100%; top: 0; left: 0; cursor: pointer;">
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">JobHub</div>
+          <p class="footer-description">Find your dream job or the perfect candidate with JobHub. We connect talented professionals with leading companies.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        
+        <div>
+          <h4>For Job Seekers</h4>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="job-listings.html">Browse Jobs</a></li>
+            <li class="footer-link"><a href="job-seeker-dashboard.html">Job Seeker Dashboard</a></li>
+            <li class="footer-link"><a href="#">Career Resources</a></li>
+            <li class="footer-link"><a href="#">Resume Tips</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4>For Employers</h4>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="post-job.html">Post a Job</a></li>
+            <li class="footer-link"><a href="employer-dashboard.html">Employer Dashboard</a></li>
+            <li class="footer-link"><a href="#">Recruitment Solutions</a></li>
+            <li class="footer-link"><a href="#">Pricing Plans</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li class="footer-link"><a href="#">About Us</a></li>
+            <li class="footer-link"><a href="contact.html">Contact Us</a></li>
+            <li class="footer-link"><a href="#">Privacy Policy</a></li>
+            <li class="footer-link"><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="copyright">&copy; 2025 JobHub. All rights reserved.</div>
+        <div class="footer-bottom-links">
+          <a href="#" class="footer-bottom-link">Privacy Policy</a>
+          <a href="#" class="footer-bottom-link">Terms of Service</a>
+          <a href="#" class="footer-bottom-link">Cookies Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <div class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+  <script src="assets/js/script.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      // Dashboard tabs
+      $('.dashboard-nav-link').on('click', function(e) {
+        if (!$(this).hasClass('logout-btn')) {
+          e.preventDefault();
+          
+          const tab = $(this).data('tab');
+          
+          $('.dashboard-nav-link').removeClass('active');
+          $(this).addClass('active');
+          
+          $('.dashboard-tab').removeClass('active');
+          $(`#${tab}-tab`).addClass('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
