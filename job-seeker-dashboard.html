@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <!-- Header Section -->
   <header class="header">
     <div class="container">
       <nav class="navbar">
@@ -41,7 +40,6 @@
     </div>
   </header>
 
-  <!-- Main Content -->
   <main id="job-seeker-dashboard-page">
     <div class="dashboard">
       <div class="dashboard-sidebar">
@@ -57,7 +55,6 @@
       </div>
       
       <div class="dashboard-content">
-        <!-- Overview Tab -->
         <div class="dashboard-tab active" id="overview-tab">
           <div class="dashboard-header">
             <h2>Dashboard Overview</h2>
@@ -99,7 +96,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- Will be populated dynamically -->
+                  <!-- Will be populated dynamically by JS -->
                 </tbody>
               </table>
             </div>
@@ -108,12 +105,11 @@
           <div>
             <h3>Recommended Jobs</h3>
             <div id="recommended-jobs" class="job-cards">
-              <!-- Will be populated dynamically -->
+              <!-- Will be populated dynamically by JS -->
             </div>
           </div>
         </div>
         
-        <!-- Applications Tab -->
         <div class="dashboard-tab" id="applications-tab">
           <div class="dashboard-header">
             <h2>My Applications</h2>
@@ -131,13 +127,12 @@
                 </tr>
               </thead>
               <tbody>
-                <!-- Will be populated dynamically -->
+                <!-- Will be populated dynamically by JS-->
               </tbody>
             </table>
           </div>
         </div>
         
-        <!-- Saved Jobs Tab -->
         <div class="dashboard-tab" id="saved-jobs-tab">
           <div class="dashboard-header">
             <h2>Saved Jobs</h2>
@@ -161,7 +156,6 @@
           </div>
         </div>
         
-        <!-- Profile Tab -->
         <div class="dashboard-tab" id="profile-tab">
           <div class="dashboard-header">
             <h2>My Profile</h2>
@@ -218,7 +212,6 @@
           </form>
         </div>
         
-        <!-- Resume Tab -->
         <div class="dashboard-tab" id="resume-tab">
           <div class="dashboard-header">
             <h2>Resume</h2>
@@ -252,7 +245,6 @@
     </div>
   </main>
 
-  <!-- Footer Section -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
@@ -260,10 +252,10 @@
           <div class="footer-logo">JobHub</div>
           <p class="footer-description">Find your dream job or the perfect candidate with JobHub. We connect talented professionals with leading companies.</p>
           <div class="social-links">
-            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a href="https://linktr.ee/koushik_dasss" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/koushiktwts" class="social-link"><i class="fab fa-twitter"></i></a>
+            <a href="https://in.linkedin.com/in/koushik-dasss" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/d_magnate_2005/" class="social-link"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
         
@@ -290,10 +282,10 @@
         <div>
           <h4>Quick Links</h4>
           <ul class="footer-links">
-            <li class="footer-link"><a href="#">About Us</a></li>
+            <li class="footer-link"><a href="contact.html">About Us</a></li>
             <li class="footer-link"><a href="contact.html">Contact Us</a></li>
-            <li class="footer-link"><a href="#">Privacy Policy</a></li>
-            <li class="footer-link"><a href="#">Terms of Service</a></li>
+            <li class="footer-link"><a href="contact.html">Privacy Policy</a></li>
+            <li class="footer-link"><a href="contact.html">Terms of Service</a></li>
           </ul>
         </div>
       </div>
@@ -301,27 +293,24 @@
       <div class="footer-bottom">
         <div class="copyright">&copy; 2025 JobHub. All rights reserved.</div>
         <div class="footer-bottom-links">
-          <a href="#" class="footer-bottom-link">Privacy Policy</a>
-          <a href="#" class="footer-bottom-link">Terms of Service</a>
-          <a href="#" class="footer-bottom-link">Cookies Policy</a>
+          <a href="contact.html" class="footer-bottom-link">Privacy Policy</a>
+          <a href="contact.html" class="footer-bottom-link">Terms of Service</a>
+          <a href="contact.html" class="footer-bottom-link">Cookies Policy</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Back to Top Button -->
   <div class="back-to-top">
     <i class="fas fa-arrow-up"></i>
   </div>
 
-  <!-- JavaScript -->
   <script src="assets/js/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
   <script src="assets/js/script.js"></script>
 
   <script>
     $(document).ready(function() {
-      // Dashboard tabs
       $('.dashboard-nav-link').on('click', function(e) {
         if (!$(this).hasClass('logout-btn')) {
           e.preventDefault();
@@ -336,7 +325,6 @@
         }
       });
       
-      // Handle resume file upload
       $('#resume-file').on('change', function() {
         const file = this.files[0];
         if (file) {
@@ -345,24 +333,24 @@
         }
       });
       
-      // Handle remove resume file
+      
       $('#remove-resume-file').on('click', function() {
         $('#resume-file').val('');
         $('#resume-file-preview').hide();
       });
       
-      // Handle save cover letter template
+     
       $('#save-cover-letter').on('click', function() {
         const coverLetterTemplate = $('#cover-letter-template').val();
         if (coverLetterTemplate) {
-          // In a real app, this would be saved to the user's profile
+          
           showAlert('Cover letter template saved successfully!', 'success');
         } else {
           showAlert('Please enter a cover letter template!', 'error');
         }
       });
       
-      // Load profile data
+      
       const currentUser = JSON.parse(localStorage.getItem('currentUser'));
       if (currentUser) {
         $('#profile-name').text(currentUser.name);
@@ -370,27 +358,26 @@
         $('#profile-full-name').val(currentUser.name);
         $('#profile-email').val(currentUser.email);
         
-        // In a real app, these would be loaded from the user's profile
+       
         $('#profile-title').text('Job Seeker');
         $('#profile-title-input').val('Job Seeker');
         $('#profile-location').html('<i class="fas fa-map-marker-alt"></i> Not specified');
         $('#profile-location-input').val('');
       }
       
-      // Handle profile form submission
+     
       $('#profile-form').on('submit', function(e) {
         e.preventDefault();
         
-        // In a real app, this would update the user's profile
+      
         showAlert('Profile updated successfully!', 'success');
         
-        // Update display values
+       
         $('#profile-name').text($('#profile-full-name').val());
         $('#profile-title').text($('#profile-title-input').val());
         $('#profile-location').html(`<i class="fas fa-map-marker-alt"></i> ${$('#profile-location-input').val() || 'Not specified'}`);
       });
       
-      // Load recommended jobs
       function loadRecommendedJobs() {
         const jobs = JSON.parse(localStorage.getItem('jobs') || '[]');
         const recommendedJobs = jobs.slice(0, 3); // Get first 3 jobs as recommendations
